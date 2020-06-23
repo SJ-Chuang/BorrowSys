@@ -13,5 +13,5 @@ Number    3
         UserID    sj851109
         Password  a2399179
         BorrowNumber 1
-        Table 14460
+        Pen 10005
 

@@ -34,7 +34,7 @@ public:
     string getUserID(){ return _userID; }
     string getUserPassWord(){ return _passWord; }
     vector<object*> getBorrowing(){ return _borrowing; }
-
+    void printBorrowing();
 
 
 private:

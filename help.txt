@@ -1,9 +1,9 @@
- Command	Work
-  exit()	exit the current state
-  login() 	log in to the system
-  logout()	log the user out of the system
-  reg()		register a account
-  borrow()	enter borrow system*
-  return()	emter retern system*
+ Command		Work
+  exit		exit the system
+  login		log in to the system
+  logout	log the user out of the system
+  register	register an account
+  borrow	enter borrow system*
+  return	enter return system*
 
 * Please login to your account first.

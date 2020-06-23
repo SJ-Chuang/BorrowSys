@@ -9,6 +9,8 @@
 #include "object.h"
 #include <string>
 #include <vector>
+#include <iostream>
+#include <iomanip>
 
 
 using namespace std;
@@ -43,4 +45,13 @@ User::returnObjectByName(string objName){
         }
     }
     return 0;
+}
+
+void
+User::printBorrowing(){
+    cout << "Items you Borrowed:" << endl;
+    for(int i = 0; i < _borrowing.size(); ++i){
+        cout << "\t" << left << setw(10) << _borrowing[i]->getObjectName() 
+                                << _borrowing[i]->getObjectID() << endl;
+    }
 }

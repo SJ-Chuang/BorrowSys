@@ -1,0 +1,1 @@
+g++ main.cpp system.cpp infoMgr.cpp util.cpp user.cpp object.cpp -o borrowsys.out

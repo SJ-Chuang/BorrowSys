@@ -257,8 +257,9 @@ infoMgr::borrowByName(string objName){
     if(!_currentUser) return false;
     map<string, vector<object*> >::iterator iter;
     iter = _objectByName.find(objName);
+    if(iter == _objectByName.end()) return false;
     vector<object*> tmpobjs = iter->second;
-    object* tmpobj ;	
+    object* tmpobj ;
     for(int i = 0; i < tmpobjs.size(); ++i){
         if(tmpobjs[i]->isAvailable()){
             tmpobj = tmpobjs[i];
@@ -291,14 +292,22 @@ infoMgr::returnByName(string objName){
 void
 infoMgr::itemList(){
     map<string, vector<object*> >::iterator iter = _objectByName.begin();
+    cout << "Name\t" << "ID" << endl << endl;
     for(iter; iter!=_objectByName.end(); ++iter){
-        cout << iter->first << ":" << endl;
+        cout << iter->first << ":\t";
         vector<object*> tmpobjects = iter->second;
-		
         for(int i = 0; i < tmpobjects.size(); ++i){
             if(tmpobjects[i]->isAvailable()){
-                cout << "    " << tmpobjects[i]->getObjectID() << endl;
+                cout << tmpobjects[i]->getObjectID() << " ";
             }
         }
+        cout << endl;
     }
+    cout << endl;
+}
+
+void 
+infoMgr::borrowingList(){
+    if(!_currentUser) cout << "No User logging.";
+    _currentUser->printBorrowing();
 }

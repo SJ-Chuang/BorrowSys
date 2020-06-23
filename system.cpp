@@ -20,15 +20,18 @@ bool System::Login(){
 	string userID, Password;
 	char ch;
 	const char ENTER = 13;
+    const char BackSpace = 8;
 	cout << "login as: ";
 	cin >> userID;
+    cout << endl;
 	cout << userID << "\'s password: ";
-	while((ch = getch()) != ENTER)
-    {
-        Password += ch;
-        cout << '*';
+	while(true){
+        ch = getch();
+        if(ch == ENTER) break;
+        if(ch == BackSpace && Password.size()) Password.pop_back();            
+        if(ch != BackSpace) Password += ch;
     }
-	cout << endl;
+	cout << endl << endl;
 	if(this->manager->login(userID, Password)){
 		this->username = userID;
 		return true;
@@ -40,59 +43,72 @@ bool System::Register(){
 	string userID, Password, confirm;
 	char ch;
 	const char ENTER = 13;
+    const char BackSpace = 8;
 	cout << "User's ID>>>";
 	cin >> userID;
+    cout << endl;
 	cout << userID << "\'s password>>>";	
-	while((ch = getch()) != ENTER)
-    {
-        Password += ch;
-        cout << '*';
+	while(true){
+        ch = getch();
+        if(ch == ENTER) break;
+        if(ch == BackSpace && Password.size()) Password.pop_back();            
+        if(ch != BackSpace) Password += ch;
     }
-	cout << endl;
+	cout << endl << endl;
 	cout << "Confirm password>>>";
-	while((ch = getch()) != ENTER)
-    {
-        confirm += ch;
-        cout << '*';
+	while(true){
+        ch = getch();
+        if(ch == ENTER) break;
+        if(ch == BackSpace && confirm.size()) confirm.pop_back();            
+        if(ch != BackSpace) confirm += ch;
     }
-	cout << endl;
+	cout << endl << endl;
 	if (confirm.compare(Password) == 0){
 		return this->manager->setIDandPassword(userID, Password);
 	}else{
-		cout << "[Error] Password and confirm password does not match." << endl;
+		cout << "[Error] Password and confirm password does not match." << endl << endl;
 		return false;
 	}
 }
 
 void System::Borrow(){	
-	string response;
-	manager->itemList();
+	string response;	
 	while(true){
-		cout << "Borrow object by enter it's Name or ID.\n>>>";
+        manager->itemList();
+		cout << "Borrow object by entering it's Name or ID.\n\n>>>";
 		cin >> response;
+        cout << endl;
+        if(response.compare("exit") == 0) break;
 		if (this->manager->borrowByName(response) || this->manager->borrowByID(response)){
-			cout << "Successful borrowing: taking good care of the borrowed item." << endl;		
+			cout << "Successful borrowing: taking good care of the borrowed item." << endl << endl;
 		}else{
-			cout << "Object has been borrowed or not exist." << endl;		
+			cout << "Object has been borrowed or not exist." << endl << endl;
 		}
 		cout << "continue borrowing[y/n]";
 		cin >> response;
+        cout << endl;
+        if(response.compare("exit") == 0) break;
 		if(response.compare("y") == 0) continue;		
 		else break;
 	}
 }
 void System::Return(){
-	string response;
+	string response;    
 	while(true){
-		cout << "Return object by enter it's Name or ID.\n>>>";
+        manager->borrowingList();
+		cout << "Return object by entering it's Name or ID.\n\n>>>";
 		cin >> response;
+        cout << endl;
+        if(response.compare("exit") == 0) break;
 		if (this->manager->returnByName(response) || this->manager->returnByID(response)){
-			cout << "Successful Returning." << endl;	
+			cout << "Successful Returning." << endl << endl;
 		}else{
-			cout << "Object is not exist or haven't been borrowed." << endl;		
+			cout << "Object is not exist or haven't been borrowed." << endl << endl;	
 		}
 		cout << "continue returning[y/n]";
 		cin >> response;
+        cout << endl;
+        if(response.compare("exit") == 0) break;
 		if(response.compare("y") == 0) continue;
 		else break;
 	}
@@ -110,61 +126,51 @@ void printfile(string filename){
 void System::Execute(){
 	string command;
 	string state("[Home]");
-	cout << "BorrowSys 1.0 (2020 OOP-FINAL)" << endl;
-	cout << "Type \"help\" for more information." << endl;
+    cout << endl;
+	cout << " BorrowSys 1.0 (2020 OOP-FINAL)" << endl << endl;
+	cout << " Type \"help\" for more information." << endl << endl;    
 	while(true){
 		cout << state << ">>>";
 		cin >> command;
-		if(command.compare("exit()") == 0) break;
+        cout << endl;
+		if(command.compare("exit") == 0) break;
 		if(command.compare("help") == 0){
 			printfile("help.txt");
 			continue;
 		}		
-		if(command.compare("login()") == 0){
+		if(command.compare("login") == 0){
 			if(this->Login()){
 				printfile("welcome.txt");
+                cout << endl;
 				state = this->username + "@BorrowSys";
 			}
-			else cout << "Login Failed: no such user or wrong password." << endl;
+			else cout << "Login Failed: no such user or wrong password." << endl << endl;
 			continue;
 		}
-		if(command.compare("logout()") == 0){
+		if(command.compare("logout") == 0){
 			if(state.compare("[Home]")) state = "[Home]";
-			else cout << "Please login to your account first." << endl;
+			else cout << "Please login to your account first." << endl << endl;
 			continue;		
 		}
-		if(command.compare("reg()") == 0){
+		if(command.compare("register") == 0){
 			if(this->Register()){
-				cout << "successful registration!" << endl;
-				cout << "Please login to your account." << endl;
+				cout << "successful registration!" << endl << endl;
+				cout << "Please login to your account." << endl << endl;
 			}
 			continue;
 		}
-		if(command.compare("borrow()") == 0){
+		if(command.compare("borrow") == 0){
 			if(state.compare("[Home]"))this->Borrow();
-			else cout << "Please login to your account first." << endl;			
+			else cout << "Please login to your account first." << endl << endl;		
 			continue;
 		}		
-		if(command.compare("return()") == 0){
+		if(command.compare("return") == 0){
 			if(state.compare("[Home]")) this->Return();
-			else cout << "Please login to your account first." << endl;
+			else cout << "Please login to your account first." << endl << endl;
 			continue;
 		}
-		cout << "CommandError: command \'" << command << "\' is not defined." << endl;		
+        std::string str = "string";
+        const char* cstr = command.c_str();
+        std::system(cstr);
 	}	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

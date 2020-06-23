@@ -65,6 +65,9 @@ public:
 
     //list all available item
     void itemList();    
+
+    //list the object current user borrowing
+    void borrowingList();
 //---------------------------------------------------------------------------------------------------------
     
     
