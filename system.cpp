@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
 #include <vector>
-#include <fstream>
 #include <conio.h>
+#include <fstream>
 #include "system.h"
-#include "infomgr.h"
+#include "infoMgr.h"
 
 using namespace std;
 
