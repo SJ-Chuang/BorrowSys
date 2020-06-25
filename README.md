@@ -1,7 +1,10 @@
 # C++ implementation of Borrowing System
 
 ## Get started
-
+```
+git clone https://github.com/SJ-Chuang/BorrowSys.git
+cd BorrowSys
+```
 Compiling with g++
 
 ```
