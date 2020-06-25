@@ -1,5 +1,5 @@
 Users
-Number    3
+Number    2
         UserID    CHichi
         Password  Cho
         BorrowNumber 0
@@ -9,9 +9,4 @@ Number    3
         BorrowNumber 2
         Pen 10001
         Table 12390
-
-        UserID    sj851109
-        Password  a2399179
-        BorrowNumber 1
-        Pen 10005
 
