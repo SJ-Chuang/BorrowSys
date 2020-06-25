@@ -1,5 +1,5 @@
 Users
-Number    2
+Number    3
         UserID    CHichi
         Password  Cho
         BorrowNumber 0
@@ -9,4 +9,10 @@ Number    2
         BorrowNumber 2
         Pen 10001
         Table 12390
+
+        UserID    userid
+        Password  password
+        BorrowNumber 2
+        Pen 10002
+        Table 14460
 

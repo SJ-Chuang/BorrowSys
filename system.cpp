@@ -2,6 +2,7 @@
 #include <string>
 #include <vector>
 #include <fstream>
+#include <cstdlib>
 #include "system.h"
 #include "infoMgr.h"
 
@@ -156,5 +157,5 @@ void System::Execute(){
         std::string str = "string";
         const char* cstr = command.c_str();
         std::system(cstr);
-	}	
+	}
 }

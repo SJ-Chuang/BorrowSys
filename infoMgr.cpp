@@ -49,14 +49,13 @@ void infoMgr::readObjectTxt(){
 
     // make sure it's objects.txt
     getline(fin, s);
-    assert(s == "Item");
 
     // get the number of objects
     getline(fin, s);
     int itemNumber ;
     itemNumber = getNum(s);
 
-    // get the info 
+    // get the info
     for(int i = 0; i < itemNumber; ++i){
         int objectNumber;
         string objectName;
@@ -90,14 +89,12 @@ void infoMgr::readUserTxt(){
     stringstream ss;
 
     // make sure it's users.txt
-    getline(fin, s);
-    assert(s == "Users");
+    getline(fin, s);    
 
     // get the number of user
     getline(fin, s);
     int userNumber;
-    getStringAndNum(s, userNumber);
-    assert(s == "Number");
+    getStringAndNum(s, userNumber);    
    
     // get the info 
     for(int i = 0; i < userNumber; ++i){
@@ -111,8 +108,7 @@ void infoMgr::readUserTxt(){
         getline(fin, s);
         ss << s;
         ss >> userTitle;
-        ss >> userID;
-        assert(userTitle == "UserID");
+        ss >> userID;        
 
         ss.str("");
         ss.clear();
@@ -120,8 +116,7 @@ void infoMgr::readUserTxt(){
         getline(fin, s);
         ss << s;
         ss >> passWordTitle;
-        ss >> passWord;
-        assert(passWordTitle == "Password");
+        ss >> passWord;        
 
         ss.str("");
         ss.clear();
@@ -130,8 +125,7 @@ void infoMgr::readUserTxt(){
         tmpuser->setPass(passWord);
 
         getline(fin, s);
-        getStringAndNum(s, borrowNum);
-        assert(s == "BorrowNumber");
+        getStringAndNum(s, borrowNum);        
 
         for(int i = 0; i < borrowNum; ++i){
             string objectName;
