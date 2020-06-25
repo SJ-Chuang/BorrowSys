@@ -1,7 +1,6 @@
 #include <iostream>
 #include <string>
 #include <vector>
-// #include <conio.h>
 #include <fstream>
 #include "system.h"
 #include "infoMgr.h"
@@ -24,16 +23,8 @@ bool System::Login(){
 	cout << "login as: ";
 	cin >> userID;
     cout << endl;
-	cout << userID << "\'s password: ";
-    
+	cout << userID << "\'s password: ";    
     cin >> Password;
-    
-	// while(true){
-        // ch = getch();
-        // if(ch == ENTER) break;
-        // if(ch == BackSpace && Password.size()) Password.pop_back();            
-        // if(ch != BackSpace) Password += ch;
-    // }
 	cout << endl << endl;
 	if(this->manager->login(userID, Password)){
 		this->username = userID;
@@ -52,21 +43,9 @@ bool System::Register(){
     cout << endl;
 	cout << userID << "\'s password>>>";
     cin >> Password;
-	// while(true){
-        // ch = getch();
-        // if(ch == ENTER) break;
-        // if(ch == BackSpace && Password.size()) Password.pop_back();            
-        // if(ch != BackSpace) Password += ch;
-    // }
 	cout << endl << endl;
 	cout << "Confirm password>>>";
-    cin >> Password;
-	// while(true){
-        // ch = getch();
-        // if(ch == ENTER) break;
-        // if(ch == BackSpace && confirm.size()) confirm.pop_back();            
-        // if(ch != BackSpace) confirm += ch;
-    // }
+    cin >> confirm;
 	cout << endl << endl;
 	if (confirm.compare(Password) == 0){
 		return this->manager->setIDandPassword(userID, Password);
